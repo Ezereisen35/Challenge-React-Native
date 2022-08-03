@@ -1,42 +1,46 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, InlineImage, TouchableOpacity, TextInput,} from 'react-native';
+import { StyleSheet, Text, View, Image, InlineImage, TouchableOpacity, TextInput, Button, Alert} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const Registrarse =({navigation})=>{
+ const Form = () =>{
+      const [mail, onChangeMail] = React.useState("");
+      const [contra, onChangeContra] = React.useState("");  
 
+    const validar = () =>{
+      console.log("a")
+      if(!mail) {
+      <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+      <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+      <p>
+        Change this and that and try again. Duis mollis, est non commodo
+        luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+        Cras mattis consectetur purus sit amet fermentum.
+      </p>
+    </Alert>}
+      else{
 
-    const form = async (i) => {
-        if(!rubros.NombreyApellido){
-          console.log("joyaa")
-            Alert.alert("Por favor complete el campo")
-        }else{
-      
-          register(rubros)
-      
-        }
-      } 
+        console.log("salio bien")
+      }
+      if(!contra) return "Contraseña"
+      return undefined
+    }
 
-
-return (
-      
+  return (
+        
+    <>
     <View>
-          
-          <TextInput style={styles.dato} placeholder="Usuario" />
-          <TextInput style={styles.dato} placeholder="Contraseña" />
-  
-          
-          <Text>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
-          <TextInput type="submit" />
-         
-          <TouchableOpacity
-        onPress={() =>form()}
-        >
-        <Text style={styles.button3Text}>
-                Siguiente
-            </Text>
-        </TouchableOpacity>
-
-  </View>
-);  
+              
+              <TextInput  placeholder="Usuario"   onChangeText={onChangeMail} value={mail} />              
+              <TextInput  placeholder="Contraseña"   onChangeText={onChangeContra} value={contra} />
+      
+            <Button onPress={validar} title="SIGUIENTE" />
+            
+               
+            
+              
+      </View>
+    </>  
+      
+  );  
 }
-
 export default Form
