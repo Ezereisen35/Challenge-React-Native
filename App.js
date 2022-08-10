@@ -3,13 +3,13 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Form from './screens/form';
 import { NavigationContainer } from '@react-navigation/native';
+import MyStack from './screens/navigation';
 
 export default function App() {
   return (
     
     <>
-    <Form/>
-    
+    <MyStack/>   
     </>
     
   );

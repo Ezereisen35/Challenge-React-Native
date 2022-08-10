@@ -3,44 +3,55 @@ import { StyleSheet, Text, View, Image, InlineImage, TouchableOpacity, TextInput
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 
-const client =  axios.create({baseURL:'https://spoonacular.com/food-api/docs#Search-Recipes-Complex'})
+const Form = ({ navigation }) => {
 
-  const Form = () =>{
-    const [email, onChangeeMail] = React.useState("");
-    const [password, onChangepassword] = React.useState("");  
+const client =  axios.create({baseURL:'http://challenge-react.alkemy.org/'})
+
+
+    const [email, onChangeEmail] = React.useState("");
+    const [password, onChangePassword] = React.useState("");  
 
     const validar = () =>{
       console.log("entro a validar")
       if(!email || !password){
-        console.log("a");
+        console.log("la quedo en validar");
+        return email,password;
+      } else{
+        console.log("salio de validar")
+      }     
+      return undefined
+    }
        /* <Alert variant="danger" onClose={() => setShow(false)} dismissible>
         <Alert.Heading>Alert</Alert.Heading>
         <p>
           Alert
         </p>
-      </Alert>*/
-      }
-      if(!password) return "password"
-      else{
-        console.log("salio de validar")
-      }
-      
-      return undefined
-    }
+      </Alert>
 
-    const guardar = () => {
+      Alert.alert(
+        "Alert Title",
+        "My Alert Msg",
+        [
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );*/
+
+    const guardar = async () => {
       console.log("entro a guardar")
       let campo = validar()
       if (!campo) {
         let obj = {
-          "Mail": email,
+          "email": email,
           "password": password
         };
         console.log(obj)
-        client.post('https://spoonacular.com/food-api/docs#Search-Recipes-Complex', obj)        
+        let token= await client.post('http://challenge-react.alkemy.org', obj)        
         .then(response => response.data)
         console.log("llego al axios")
+        console.log(token);
+        () => navigation.navigate('Home')
       }
+      
     }
 
   return (
@@ -48,8 +59,8 @@ const client =  axios.create({baseURL:'https://spoonacular.com/food-api/docs#Sea
     <>
     <View>
               
-              <TextInput  placeholder="Usuario"   onChangeText={onChangeeMail} value={email} />              
-              <TextInput  placeholder="password"   onChangeText={onChangepassword} value={password} />
+              <TextInput  placeholder="Usuario"   onChangeText={onChangeEmail} value={email} />              
+              <TextInput  placeholder="password"   onChangeText={onChangePassword} value={password} />
       
             <Button onPress={guardar} title="SIGUIENTE" />
             
@@ -62,4 +73,6 @@ const client =  axios.create({baseURL:'https://spoonacular.com/food-api/docs#Sea
   );  
 
   }
-export default Form;
+
+  export default Form;
+
