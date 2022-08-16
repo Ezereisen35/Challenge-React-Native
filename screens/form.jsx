@@ -2,6 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, InlineImage, TouchableOpacity, TextInput, Button, Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
+import {contextState} from './contextState'
 
 const Form = ({ navigation }) => {
 
@@ -50,6 +51,8 @@ const client =  axios.create({baseURL:'http://challenge-react.alkemy.org/'})
         console.log("llego al axios")
         console.log(token);
         () => navigation.navigate('Home')
+
+        //token = contextState;
       }
       
     }

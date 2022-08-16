@@ -4,12 +4,16 @@ import { StyleSheet, Text, View } from 'react-native';
 import Form from './screens/form';
 import { NavigationContainer } from '@react-navigation/native';
 import MyStack from './screens/navigation';
+import ContextProvider from './screens/contextState'
 
 export default function App() {
   return (
-    
     <>
-    <MyStack/>   
+    
+        
+      <MyStack/>   
+
+  
     </>
     
   );
