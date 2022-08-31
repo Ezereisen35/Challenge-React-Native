@@ -1,21 +1,22 @@
 import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, InlineImage, TouchableOpacity, TextInput, Button, Alert} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+
 import axios from 'axios';
-import {contextState} from './contextState'
+//import {contextState} from './contextState'
+import { useNavigation } from '@react-navigation/native';
 
 const Form = ({ navigation }) => {
 
 const client =  axios.create({baseURL:'http://challenge-react.alkemy.org/'})
 
 
-    const [email, onChangeEmail] = React.useState("");
-    const [password, onChangePassword] = React.useState("");  
+    const [email, onChangeEmail] = React.useState("challenge@alkemy.org");
+    const [password, onChangePassword] = React.useState("react");  
 
     const validar = () =>{
       console.log("entro a validar")
       if(!email || !password){
-        console.log("la quedo en validar");
+        console.log("la quedo en validar")
         return email,password;
       } else{
         console.log("salio de validar")
@@ -50,9 +51,9 @@ const client =  axios.create({baseURL:'http://challenge-react.alkemy.org/'})
         .then(response => response.data)
         console.log("llego al axios")
         console.log(token);
-        () => navigation.navigate('Home')
-
-        //token = contextState;
+        navigation.navigate('Home')
+        console.log("termino la funcion")
+       // token = contextState;
       }
       
     }
@@ -67,9 +68,10 @@ const client =  axios.create({baseURL:'http://challenge-react.alkemy.org/'})
       
             <Button onPress={guardar} title="SIGUIENTE" />
             
-               
-            
-              
+           {/*   
+            <NombreDelPlato/>
+            <ImagenDelPlato/>
+  */}
       </View>
     </>  
       
