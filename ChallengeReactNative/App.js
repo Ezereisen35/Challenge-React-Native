@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Form from './screens/form';
 import { NavigationContainer } from '@react-navigation/native';
-import MyStack from './screens/navigation';
+import Main from './navigation/navigation';
 import ContextProvider from './screens/contextState'
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
     <>
     
         
-      <MyStack/>   
+      <Main/>   
 
   
     </>

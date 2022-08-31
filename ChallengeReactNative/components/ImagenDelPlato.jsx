@@ -23,13 +23,16 @@ const ImagenDelPlato = ({ navigation }) => {
             setImagenPlatos(ghostlist)
         })
     },[])
+
+    console.log(imagenPlatos)
     return(
         <>
             {
                 imagenPlatos.map(
                     (i) => (
                         <>
-                            {i.image}
+                            <p>{i.title}</p>
+                            <img src={i.image} style={{height:'80px',width:'80px',marginLeft:'100px'}}/>
                         </>
                     )
                 )
