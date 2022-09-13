@@ -4,15 +4,17 @@ import { useNavigation } from '@react-navigation/native';
 
 import NombreDelPlato from '../components/NombreDelPlato';
 import ImagenDelPlato from '../components/ImagenDelPlato';
+import Detalle from '../components/Detalle';
+
 
 const Home = ({ navigation }) => {
 
 return(
 
-<View>
+<>
 <ImagenDelPlato/>
-
-</View>
+<Detalle/>
+</>
 
 )
     
